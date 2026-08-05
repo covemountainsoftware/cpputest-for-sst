@@ -1,0 +1,3 @@
+set(CMS_SST_SRC_DIR ${CMS_SST_TOP_DIR}/src)
+set(CMS_SST_INCLUDE_DIR ${CMS_SST_TOP_DIR}/include)
+
