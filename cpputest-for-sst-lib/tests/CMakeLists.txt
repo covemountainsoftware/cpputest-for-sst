@@ -1,5 +1,5 @@
 
-set(TEST_APP_NAME cpputest-for-qpc-lib-tests)
+set(TEST_APP_NAME cpputest-for-sst-lib-tests)
 set(TEST_SOURCES
         cms_cpputest_sst_ctrl_tests.cpp
         cms_cpputest_sst_ctrl_post_tests.cpp

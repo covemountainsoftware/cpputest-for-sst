@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(cpputest-for-sst-lib VERSION 1.6.1)
+project(cpputest-for-sst-lib VERSION 0.9.0)
 include(FetchContent)
 
 set(CMAKE_CXX_STANDARD 17)

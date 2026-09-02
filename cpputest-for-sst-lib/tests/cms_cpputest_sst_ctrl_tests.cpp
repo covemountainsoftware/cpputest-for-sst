@@ -2,69 +2,77 @@
 #include <chrono>
 #include <string>
 #include "cms_cpputest_sst_ctrl.hpp"
+#include "cms_dummy_active_object.hpp"
 
 //cpputest header include must always be last
+#include "cms_cpputest.hpp"
 #include "CppUTest/TestHarness.h"
 
 using namespace cms::test;
 
 TEST_GROUP(sst_ctrl_tests)
 {
+    std::array<SST::Evt const*, 10> events;
+
     void setup() final
     {
+        events.fill(nullptr);
         sst_ctrl::Setup();
     }
 
     void teardown() final
     {
-        cms::test::sst_ctrl::Teardown();
+        sst_ctrl::Teardown();
     }
 };
 
 TEST(sst_ctrl_tests,
      provides_for_ability_to_move_time_forward_firing_active_object_timers_as_expected)
 {
-#if 0 //TODO
+    enum Signals { SIG_1 = 200, SIG_2 };
+
     using namespace std::chrono_literals;
 
-    enum Signals { SIG_1 = Q_USER_SIG, SIG_2 };
-    qf_ctrl::Setup(10, 1000);
-
-    int sigOneCount = 0;
-    int sigTwoCount = 0;
+    std::size_t sigOneCount = 0;
+    std::size_t sigTwoCount = 0;
 
     // a 'dummy' active object is needed to verify
     // that QF timers are actually firing.
     auto dummy = std::unique_ptr<DefaultDummyActiveObject>(
-      new DefaultDummyActiveObject());
-    dummy->dummyStart();
-    dummy->SetPostedEventHandler([&](QEvt const* e) {
-        if (e->sig == SIG_1) {
+        new DefaultDummyActiveObject());
+
+    dummy->SetPostedEventHandler([&](SST::Evt const* e)
+    {
+        if (e->sig == SIG_1)
+        {
             sigOneCount++;
         }
-        else if (e->sig == SIG_2) {
+        else if (e->sig == SIG_2)
+        {
             sigTwoCount++;
         }
-        else {
+        else
+        {
             CMS_TEST_EXIT;
         }
     });
 
-    QTimeEvt singleShotTimer;
-    QTimeEvt_ctorX(&singleShotTimer, dummy->getQActive(), SIG_1, 0U);
-    QTimeEvt_armX(&singleShotTimer, 1000, 0);
+    dummy->start(sst_ctrl::UNIT_UNDER_TEST_PRIORITY,
+                 events.data(), events.size(),
+                 nullptr);
 
-    QTimeEvt repeatingTimer;
-    QTimeEvt_ctorX(&repeatingTimer, dummy->getQActive(), SIG_2, 0U);
-    QTimeEvt_armX(&repeatingTimer, 2000, 2000);
+    SST::TimeEvt singleShotTimer(SIG_1, dummy.get());
+    singleShotTimer.arm(1000, 0);
+
+    SST::TimeEvt repeatingTimer(SIG_2, dummy.get());
+    repeatingTimer.arm(2000, 2000);
 
     // Now move time forward 6 seconds.
     // Expect one SIG_1 and three hits on SIG_2
-    qf_ctrl::MoveTimeForward(6s);
+    cms::test::sst_ctrl::MoveTimeForward(6s);
 
     CHECK_EQUAL(1, sigOneCount);
     CHECK_EQUAL(3, sigTwoCount);
-#endif
 }
 
 TEST(sst_ctrl_tests, provides_lib_version)

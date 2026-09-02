@@ -1,11 +1,9 @@
 include_directories(include)
-include_directories(${CMS_QPC_SRC_DIR})
-include_directories(${CMS_CPPUTEST_QP_PORT_TOP_DIR}/include)
+include_directories(${CMS_SST_SRC_DIR})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_definitions(-DCPPUTEST_FOR_QPC_LIB_VERSION=\"${cpputest-for-qpc-lib_VERSION}\")
-
+add_definitions(-DCPPUTEST_FOR_SST_LIB_VERSION=\"${cpputest-for-sst-lib_VERSION}\")
 add_library(cpputest-for-sst-lib
         src/sst_support.cpp
         src/cms_cpputest_sst_ctrl.cpp

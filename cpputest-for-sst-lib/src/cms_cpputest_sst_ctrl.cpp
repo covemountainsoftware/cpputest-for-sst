@@ -248,5 +248,6 @@ void cms::test::sst_ctrl::MoveTimeForward(const std::chrono::milliseconds& durat
 
 const char* cms::test::sst_ctrl::GetVersion()
 {
-    return "TODO";
+    return CPPUTEST_FOR_SST_LIB_VERSION;
+
 }
