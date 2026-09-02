@@ -7,6 +7,11 @@
 
 namespace cms::test::sst_ctrl
 {
+    /**
+     * @return The string representing the version of this library
+     */
+    const char* GetVersion();
+
     enum : uint8_t
     {
         DUMMY_AO_A_PRIORITY,
@@ -49,6 +54,11 @@ namespace cms::test::sst_ctrl
      */
     void MoveTimeForward(const std::chrono::milliseconds& duration);
 
+    /**
+     * Post an immediate event then allow Tasks processing time.
+     * @param e the event to post
+     * @param dest the destination Task (Active Object) to post to.
+     */
     inline void PostAndProcess(SST::Evt const* e, SST::Task* dest)
     {
         dest->post(e);
@@ -61,8 +71,6 @@ namespace cms::test::sst_ctrl
         static const SST::Evt constEvent = {sig};
         PostAndProcess(&constEvent, dest);
     }
-
-    const char* GetVersion();
 } // namespace cms::test::sst_ctrl
 
 #endif // CPPUTEST_FOR_SST_LIB_CMS_CPPUTEST_SST_CTRL_HPP
