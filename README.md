@@ -1,5 +1,7 @@
 # CppUTest for the Super-Simple-Tasker (library only)
 
+Build and Test status: ![Build and Tests](https://github.com/covemountainsoftware/cpputest-for-sst/actions/workflows/cmake.yml/badge.svg)
+
 A CppUTest support library for unit testing tasks intended for 
 the Super Simple Tasker (SST). At this time, only supporting the 
 C++ version of the SST.
