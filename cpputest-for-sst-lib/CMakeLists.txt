@@ -8,6 +8,7 @@ add_library(cpputest-for-sst-lib
         src/sst_support.cpp
         src/cms_cpputest_sst_ctrl.cpp
         src/cpputestMain.cpp
+        src/cms_dbc_assert_support.cpp
 )
 add_subdirectory(tests)
 

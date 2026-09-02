@@ -3,6 +3,7 @@ set(TEST_APP_NAME cpputest-for-sst-lib-tests)
 set(TEST_SOURCES
         cms_cpputest_sst_ctrl_tests.cpp
         cms_cpputest_sst_ctrl_post_tests.cpp
+        cms_dbc_assert_tests.cpp
 )
 
 # this include expects TEST_SOURCES and TEST_APP_NAME to be
