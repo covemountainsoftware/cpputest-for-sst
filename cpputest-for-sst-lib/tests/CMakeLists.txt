@@ -4,6 +4,7 @@ set(TEST_SOURCES
         cms_cpputest_sst_ctrl_tests.cpp
         cms_cpputest_sst_ctrl_post_tests.cpp
         cms_dbc_assert_tests.cpp
+        cms_sst_flat_state_machine_task_tests.cpp
 )
 
 # this include expects TEST_SOURCES and TEST_APP_NAME to be
@@ -11,3 +12,5 @@ set(TEST_SOURCES
 include(${CMS_CMAKE_DIR}/cpputestCMake.cmake)
 
 target_link_libraries(${TEST_APP_NAME} cpputest-for-sst-lib ${CPPUTEST_LDFLAGS})
+
+target_compile_options(${TEST_APP_NAME} PRIVATE -Wall -Wextra -Werror)
