@@ -32,7 +32,8 @@ following capabilities:
   Tasks (active objects.)
 * Supporting utilities to simplify unit testing of SST
   based Tasks. 
-* A separate examples project providing usage/examples of this library (TODO)
+* A separate sibling project provides usage/examples of this library,
+  see [cpputest-for-sst-examples](https://github.com/covemountainsoftware/cpputest-for-sst-examples).
 
 Benefits of this approach to unit testing active objects include:
 * No surprises. The active object under test interacts with the
@@ -52,6 +53,6 @@ Benefits of this approach to unit testing active objects include:
   system. Run all the tests with every commit. No surprises when
   it is time to generate a target release.
 
-**An example project demonstrating the features of this library and
+An example project demonstrating the features of this library and
 how to import and use from with a CMake build environment is available
-here: TODO **
+here:  [cpputest-for-sst-examples](https://github.com/covemountainsoftware/cpputest-for-sst-examples).
