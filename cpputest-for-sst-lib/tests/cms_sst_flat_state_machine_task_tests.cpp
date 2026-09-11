@@ -39,10 +39,10 @@ namespace
         {
             switch (e->sig)
             {
-            case cms::SM_ENTER:
+            case cms::SM_ENTER_SIG:
                 mock("TestDerived").actualCall("PingingEnter");
                 return Handled();
-            case cms::SM_EXIT:
+            case cms::SM_EXIT_SIG:
                 mock("TestDerived").actualCall("PingingExit");
                 return Handled();
             case DO_PING:
@@ -59,10 +59,10 @@ namespace
         {
             switch (e->sig)
             {
-            case cms::SM_ENTER:
+            case cms::SM_ENTER_SIG:
                 mock("TestDerived").actualCall("PongingEnter");
                 return Handled();
-            case cms::SM_EXIT:
+            case cms::SM_EXIT_SIG:
                 mock("TestDerived").actualCall("PongingExit");
                 return Handled();
             case DO_PONG:

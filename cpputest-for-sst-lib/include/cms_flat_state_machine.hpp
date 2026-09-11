@@ -110,8 +110,8 @@ namespace cms
         }
 
     private:
-        const EventT EnterEvent = {SM_ENTER};
-        const EventT ExitEvent = {SM_EXIT};
+        const EventT EnterEvent = {SM_ENTER_SIG};
+        const EventT ExitEvent = {SM_EXIT_SIG};
 
         StateMethodHandler mCurrent = nullptr;
     };

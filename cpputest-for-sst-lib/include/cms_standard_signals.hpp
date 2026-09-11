@@ -30,9 +30,9 @@ namespace cms
 {
     enum StandardSignals
     {
-        SM_PROBE,
-        SM_ENTER,
-        SM_EXIT,
+        SM_PROBE_SIG,
+        SM_ENTER_SIG,
+        SM_EXIT_SIG,
         SM_BEGIN_USER_SIGNALS
     };
 } //namespace cms
