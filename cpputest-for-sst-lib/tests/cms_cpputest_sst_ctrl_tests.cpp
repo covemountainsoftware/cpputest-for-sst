@@ -36,10 +36,8 @@ TEST(sst_ctrl_tests,
     std::size_t sigOneCount = 0;
     std::size_t sigTwoCount = 0;
 
-    // a 'dummy' active object is needed to verify
-    // that QF timers are actually firing.
-    auto dummy = std::unique_ptr<DefaultDummyActiveObject>(
-        new DefaultDummyActiveObject());
+    // a 'dummy' active object is needed to verify that timers are actually firing.
+    const auto dummy = std::make_unique<DefaultDummyActiveObject>();
 
     dummy->SetPostedEventHandler([&](SST::Evt const* e)
     {
@@ -77,9 +75,9 @@ TEST(sst_ctrl_tests,
 
 TEST(sst_ctrl_tests, provides_lib_version)
 {
-    auto version = sst_ctrl::GetVersion();
+    const auto version = sst_ctrl::GetVersion();
     CHECK_TRUE(version != nullptr);
 
-    std::string version_str(version);
+    const std::string version_str(version);
     CHECK_FALSE(version_str.empty());
 }
