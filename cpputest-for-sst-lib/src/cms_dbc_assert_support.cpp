@@ -42,5 +42,8 @@ void DBC_fault_handler(char const* module, const int id)
         .withParameter("id", id);
 
     CMS_TEST_EXIT;
+
+    //make some compilers happier
+    do {} while (true);
 }
 
