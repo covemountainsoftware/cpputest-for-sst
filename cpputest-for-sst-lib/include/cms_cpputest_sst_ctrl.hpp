@@ -68,7 +68,7 @@ namespace cms::test::sst_ctrl
     template <SST::Signal sig>
     void PostAndProcess(SST::Task* dest)
     {
-        static const SST::Evt constEvent = {sig};
+        static const SST::Evt constEvent {sig};
         PostAndProcess(&constEvent, dest);
     }
 } // namespace cms::test::sst_ctrl
