@@ -119,7 +119,15 @@ namespace SST
         SST_PORT_CRIT_EXIT();
         return status;
     }
-
+    //............................................................................
+    bool TimeEvt::isArmed() const
+    {
+        SST_PORT_CRIT_STAT
+        SST_PORT_CRIT_ENTRY();
+        bool disarmed = (m_ctr == 0U) && (m_interval == 0U);
+        SST_PORT_CRIT_EXIT();
+        return !disarmed;
+    }
     //............................................................................
     void TimeEvt::tick()
     {
