@@ -12,7 +12,7 @@ if(NOT DEFINED CMS_SST_TOP_DIR)
     set(CMS_SST_TOP_DIR ${CMS_EXTERNALS_TOP_DIR}/Super-Simple-Tasker)
     FetchContent_Declare(sst
             GIT_REPOSITORY https://github.com/QuantumLeaps/Super-Simple-Tasker.git
-            GIT_TAG        41d0d219a2c037aa1354c9140ed899fb5b020bc3 #2.3.4
+            GIT_TAG        e2c16237733fd01ad2f38e771be7f9d956291ab9 #latest, with isArmed method
             SOURCE_DIR     ${CMS_SST_TOP_DIR}
     )
     message("Fetching Super-Simple-Tasker git repository")
